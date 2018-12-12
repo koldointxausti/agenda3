@@ -94,6 +94,7 @@ public class Interface {
 					System.out.println("Whose information do you want? (Enter hers/his name)");
 					String findName = sc.next();
 					boolean flag2 = false;
+					
 					for (int i = 0; i < x.getKontaktuak().size(); i++) {
 						if (findName.compareTo(x.getKontaktuak().get(i).getPerson().getName()) == 0) {
 							System.out.println(x.readContact(findName));
@@ -144,17 +145,19 @@ public class Interface {
 									System.out.println("Your actual name is "
 											+ x.getKontaktuak().get(position).getPerson().getName());
 									System.out.println("What's the name you want?");
-									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "name", sc.next());
+									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "name",
+											sc.next());
 									System.out.println("Your name has been changed");
 									break;
 								case 2: /* Change age */
-									System.out.println(
-											"Your actual age is " + x.getKontaktuak().get(position).getPerson().getAge());
+									System.out.println("Your actual age is "
+											+ x.getKontaktuak().get(position).getPerson().getAge());
 									System.out.println("What's the age you want?");
 									boolean loop = true;
 									while (loop) {
 										if (sc.hasNextInt()) {
-											x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "age", Integer.toString(sc.nextInt()));
+											x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),
+													"age", Integer.toString(sc.nextInt()));
 											loop = false;
 										} else
 											System.out.println("It has to be a number");
@@ -168,7 +171,8 @@ public class Interface {
 									loop = true;
 									while (loop) {
 										if (sc.hasNextInt()) {
-											x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),"weight", Integer.toString(sc.nextInt()));
+											x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),
+													"weight", Integer.toString(sc.nextInt()));
 											loop = false;
 										} else
 											System.out.println("It has to be a number");
@@ -176,10 +180,11 @@ public class Interface {
 									System.out.println("Your weight has been changed");
 									break;
 								case 4: /* Change DNI */
-									System.out.println(
-											"Your actual DNI is " + x.getKontaktuak().get(position).getPerson().getDni());
+									System.out.println("Your actual DNI is "
+											+ x.getKontaktuak().get(position).getPerson().getDni());
 									System.out.println("What's the DNI you want?");
-									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),"dni", sc.next());
+									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "dni",
+											sc.next());
 									System.out.println("Your DNI has been changed");
 									break;
 								case 5:/* Change Telephone Number */
@@ -191,7 +196,8 @@ public class Interface {
 										if (sc.hasNextInt()) {
 											tfn = sc.nextInt();
 											if (Integer.toString(tfn).length() == 9) {
-												x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),"number", Integer.toString(tfn));
+												x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),
+														"number", Integer.toString(tfn));
 												loop = false;
 											} else
 												System.out.println("The number has to be 9 digits long");
@@ -204,7 +210,8 @@ public class Interface {
 									System.out.println(
 											"Your actual address is: " + x.getKontaktuak().get(position).getAddress());
 									System.out.println("What's the address you want me to save?");
-									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "address", sc.nextLine());
+									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "address",
+											sc.nextLine());
 									break;
 								default:/* if the user doesn't enter an option we can use */
 									System.out.println("Enter one of the options bellow:");
