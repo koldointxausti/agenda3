@@ -1,7 +1,6 @@
 package agenda3;
 
 import java.util.Scanner;
-
 import com.zubiri.agenda.*;
 
 public class Interface {
@@ -48,7 +47,6 @@ public class Interface {
 							System.out.println("It has to be a number");
 					}
 					flag = true;
-					System.out.println("Height:");
 					System.out.println("DNI:");
 					flag = true;
 					while (flag) {
@@ -98,12 +96,12 @@ public class Interface {
 					boolean flag2 = false;
 					for (int i = 0; i < x.getKontaktuak().size(); i++) {
 						if (findName.compareTo(x.getKontaktuak().get(i).getPerson().getName()) == 0) {
-							x.readContact(findName);
+							System.out.println(x.readContact(findName));
 							flag2 = true;
 							break;
 						}
 					}
-					if (flag2)
+					if (flag2 == false)
 						System.out.println("There's no person with that name created yet");
 					System.out.println();
 					break;
@@ -121,7 +119,7 @@ public class Interface {
 							break;
 						}
 					}
-					if (flag2)
+					if (flag2 == false)
 						System.out.println("There's no person with that name created yet");
 					if (position >= 0) {
 						newContact = x.getKontaktuak().get(position);
@@ -133,7 +131,9 @@ public class Interface {
 							System.out.println(" - 4. DNI");
 							System.out.println(" - 5. Telephone number");
 							System.out.println(" - 6. Address");
-							System.out.println(" - 0. None");
+							System.out.println("--------------------------------");
+							System.out.println(" - 0. Go back to menu");
+							System.out.println();
 							if (sc.hasNextInt()) {
 								int change = sc.nextInt();
 								switch (change) {
@@ -144,8 +144,7 @@ public class Interface {
 									System.out.println("Your actual name is "
 											+ x.getKontaktuak().get(position).getPerson().getName());
 									System.out.println("What's the name you want?");
-									newContact.getPerson().setName(sc.next());
-									x.modifyContact(newContact, position);
+									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "name", sc.next());
 									System.out.println("Your name has been changed");
 									break;
 								case 2: /* Change age */
@@ -155,8 +154,7 @@ public class Interface {
 									boolean loop = true;
 									while (loop) {
 										if (sc.hasNextInt()) {
-											newContact.getPerson().setAge(sc.nextInt());
-											x.modifyContact(newContact, position);
+											x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "age", Integer.toString(sc.nextInt()));
 											loop = false;
 										} else
 											System.out.println("It has to be a number");
@@ -170,8 +168,7 @@ public class Interface {
 									loop = true;
 									while (loop) {
 										if (sc.hasNextInt()) {
-											newContact.getPerson().setWeight(sc.nextInt());
-											x.modifyContact(newContact, position);
+											x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),"weight", Integer.toString(sc.nextInt()));
 											loop = false;
 										} else
 											System.out.println("It has to be a number");
@@ -182,8 +179,7 @@ public class Interface {
 									System.out.println(
 											"Your actual DNI is " + x.getKontaktuak().get(position).getPerson().getDni());
 									System.out.println("What's the DNI you want?");
-									newContact.getPerson().setDni(sc.next());
-									x.modifyContact(newContact, position);
+									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),"dni", sc.next());
 									System.out.println("Your DNI has been changed");
 									break;
 								case 5:/* Change Telephone Number */
@@ -195,8 +191,7 @@ public class Interface {
 										if (sc.hasNextInt()) {
 											tfn = sc.nextInt();
 											if (Integer.toString(tfn).length() == 9) {
-												newContact.setNumber(tfn);
-												x.modifyContact(newContact, position);
+												x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(),"number", Integer.toString(tfn));
 												loop = false;
 											} else
 												System.out.println("The number has to be 9 digits long");
@@ -209,8 +204,7 @@ public class Interface {
 									System.out.println(
 											"Your actual address is: " + x.getKontaktuak().get(position).getAddress());
 									System.out.println("What's the address you want me to save?");
-									sc.nextLine();
-									x.modifyContact(newContact, position);
+									x.modifyContact(x.getKontaktuak().get(position).getPerson().getName(), "address", sc.nextLine());
 									break;
 								default:/* if the user doesn't enter an option we can use */
 									System.out.println("Enter one of the options bellow:");
